@@ -1,0 +1,4 @@
+.env
+knn_model.pkl
+naive_bayes_model.pkl
+random_forest_model.pkl
