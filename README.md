@@ -1,79 +1,102 @@
 # URO APP
 
-Herramienta Móvil de Apoyo a la Toma de Decisiones en el Tratamiento del Cáncer de Vejiga basada en Inteligencia Artificial
+## Descripción
+URO APP es una herramienta móvil basada en Inteligencia Artificial que brinda soporte en la toma de decisiones relacionadas con el tratamiento del cáncer de vejiga.
 
-## Pasos para levantar la aplicación
-## Requerimientos
-Para levantar la aplicación es necesario tener instaladas las siguientes aplicaciones:
-#### Lenguaje de programacion
+## Requisitos
+Antes de poner en marcha la aplicación, asegúrate de tener las siguientes aplicaciones y componentes instalados:
+
+#### Lenguaje de programación
 - [Python 3](https://www.python.org/downloads/)
-#### Entorno virvtual de python (virtualenv)
-- `pip install virtualenv` | `pip3 install virtualenv`
-#### Servidor de base de datos (puede ser cualquiera de los que se listan a continuación)
-- [wamp](https://www.wampserver.com/en/download-wampserver-64bits/)
-- [xampp](https://www.apachefriends.org/es/download.html)
 
-#### Plataforma API para probar los endpoints que hemos desarrollado (cualquiera de las que se listan a continuación)
+#### Entorno virtual de Python (virtualenv)
+- Para instalar virtualenv, ejecuta el siguiente comando en tu terminal:
+  - `pip install virtualenv` o `pip3 install virtualenv`
+
+#### Servidor de base de datos
+Puedes elegir uno de los siguientes servidores de base de datos para utilizar:
+- [WampServer](https://www.wampserver.com/en/download-wampserver-64bits/)
+- [XAMPP](https://www.apachefriends.org/es/download.html)
+
+#### Plataforma API para probar los endpoints
+Para probar los endpoints de la aplicación, puedes utilizar cualquiera de las siguientes plataformas:
 - [Postman](https://www.postman.com/downloads/)
 - [Insomnia](https://insomnia.rest/download)
 
-Una vez instalados los requerimientos arriba mencionados, procedemos con la creación de una base de datos en nuestro gestor de base de datos MySql.
-- La base de datos debe llamarse: *`uro_bd_v1`*
-- El siguiente paso es configurar la conexión de la base de datos en la aplicación. Para ello, nos dirigimos al directorio *`uro_api/backend/backend`*, abrimos el fichero *settings.py* y en `DATABASES`, configuramos las variables con nuestros credenciales para acceder a nuestra base de datos local que hemos creado previamente.\
-por ejemplo:\
-DATABASES = {\
-    'default': {\
-        'ENGINE': 'django.db.backends.mysql',\
-        'NAME': 'uro_bd_v1',\
-        'USER': 'nombre de usuario para acceder a la base de datos',\
-        'PASSWORD': 'password para acceder a la base de datos',\
-        'HOST': 'localhost',\
-        'PORT': el puerto donde está correindo el servidor de la base de datos.,\
-        'OPTIONS': {
-            'charset': 'utf8',
-        },\
-    }
-}
-### Instalación de los módulos y librerías de Python
-El siguiente paso corresponde a la instalción de todos los módulos y librerías utilizados en el proyecto.\
-Primero debemos crear y activar el entorno virtual donde levantaremos nuestra aplicación. Este paso es sumamente importante para evitar conflitos, en caso de que tengamos otras aplicaciones de python en nuestra máquina.
+## Configuración de la Base de Datos
+Una vez instalados los requisitos anteriores, sigue estos pasos para configurar la base de datos:
 
-Abrimos la terminal y, nos dirigimos a la carpeta donde se encuentra nuestro proyecto y ejecutamos los siguientes comandos:
-- *virtualenv venv* -> creamos el entorno virtual
--  *source venv/Scripts/activate* -> activamos el entorno virtual
+1. Crea una base de datos con el nombre: *`uro_bd_v1`* en tu servidor de base de datos MySQL.
 
-Para instalar las liobrerias, desde la terminal de comandos nos dirigimos al directorio *uro_api/backend* y ejecutamos el siguiente comando:
-- pip install -r requirements.txt
+2. Abre el archivo de configuración de la conexión a la base de datos ubicado en *`uro_api/backend/backend/settings.py`*.
 
-Haste este punto si todo ha ido bien ya tenemos todo listo para levantar la aplicación. Pero todavía nos quedas unos pasos más.
-Desde el mismo diroctório donde nos encontramos, ejecutamos los siguientes comandos para crear las migraciones y luego migrar estos cambios a la base de datos.
-- *`python manage.py makemigrations`* -> creamos las migracions
-- *`python manage.py migrate`* -> migramos los cambios a la base de datos
+3. En la sección `DATABASES`, configura las siguientes variables con tus credenciales para acceder a la base de datos local que creaste previamente. Por ejemplo:
 
-Es posible que se genere un error relacionado con el tamaño de los campos que hemos asignados al crear nuestro modelo de datos para las tablas *`user`*, *`bladdercancer`* y *`bladdercancerprediction`*. Para solucionar el error ejecutamos el siguiente comando a cada una de las tablas desde nuestro servidor local:\
-*ALTER DATABASE `databasename` CHARACTER SET utf8;* 
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'uro_bd_v1',
+           'USER': 'nombre de usuario para acceder a la base de datos',
+           'PASSWORD': 'password para acceder a la base de datos',
+           'HOST': 'localhost',
+           'PORT': 'el puerto donde está corriendo el servidor de la base de datos',
+           'OPTIONS': {
+               'charset': 'utf8',
+           },
+       }
+   }
+   ```
 
-Hecho esto, ya estamos en condiciones de hacer el `makemigrations` y el `migrate`.\
-Una vez hecha las migraciones, procedemos con la importacion de los datos iniciales a la tabla `bladdercancerprediction`. El script se encuentra adjuntado en la misma carpeta donde el proyecto\
-Ahora sí, ya estamos en condiciones de levantar nuesta aplicación, para ello ejecutamos el siguiente comando:
-- python manage.py runserver.
+## Instalación de Módulos y Librerías de Python
+Continúa con la instalación de los módulos y librerías necesarios para el proyecto:
+
+1. Crea y activa un entorno virtual para evitar conflictos con otras aplicaciones de Python en tu máquina. Ejecuta los siguientes comandos en tu terminal:
+
+   - `virtualenv venv` para crear el entorno virtual.
+   - `source venv/Scripts/activate` para activar el entorno virtual.
+
+2. En la terminal de comandos, navega al directorio *`uro_api/backend`* y ejecuta el siguiente comando para instalar las bibliotecas requeridas:
+
+   - `pip install -r requirements.txt`
+
+3. Asegúrate de que todo se configure correctamente hasta este punto para evitar problemas futuros.
+
+## Migración de la Base de Datos
+Realiza las migraciones necesarias en la base de datos:
+
+1. Ejecuta los siguientes comandos desde el mismo directorio donde te encuentras:
+
+   - `python manage.py makemigrations` para crear las migraciones.
+   - `python manage.py migrate` para aplicar las migraciones a la base de datos.
+
+2. Si surge un error relacionado con el tamaño de los campos asignados en el modelo de datos para las tablas *user*, *bladdercancer*, y *bladdercancerprediction*, ejecuta el siguiente comando en tu servidor local:
+
+   - `ALTER DATABASE databasename CHARACTER SET utf8;`
+
+3. Luego, vuelve a ejecutar `makemigrations` y `migrate`.
+
+## Importación de Datos Iniciales
+Procede con la importación de los datos iniciales en la tabla `bladdercancerprediction`. Puedes encontrar el script adjunto en la misma carpeta del proyecto.
+
+## Iniciar la Aplicación
+Ahora, la aplicación está lista para ser ejecutada. Utiliza el siguiente comando para iniciarla:
+
+- `python manage.py runserver`
 
 ## Endpoints
-Para conocer los endpoints disponibles en nuetra alicación, desde un navegador accedemos a las siguientes rutas:
-- http://localhost:8000/docs
-- http://localhost:8000/redocs
+Para explorar los endpoints disponibles en la aplicación, abre un navegador y accede a las siguientes rutas:
 
-Las dos rutas nos mustran la documentación en swagger de nuestros endpoints, es decir, muestran:
-- `el endpoint`
-- `el/los parametros `
-- `y la repuesta`
+- [Documentación Swagger](http://localhost:8000/docs)
+- [Documentación ReDoc](http://localhost:8000/redocs)
 
-Empezamos a probar los distintos endpoints, pero primero hay que darse de alta como medico en la aplicación, a traves del endpoint:
-- http://localhost:8000/auth/register/
-se trata de una petición de tipo POST, por tanto enviamos los datos como se muestra en la imagen a continuación:
+Estas rutas proporcionan información detallada sobre los endpoints, los parámetros y las respuestas disponibles.
 
+## Registro de Médico
+Antes de comenzar a utilizar los endpoints, debes registrarte como médico en la aplicación. Utiliza el siguiente endpoint:
 
+- `http://localhost:8000/auth/register/`
 
+Este endpoint es una solicitud de tipo POST, por lo que debes enviar los datos como se muestra en la imagen a continuación:
 
-
-
+![registro medico](registro_medico.png)
