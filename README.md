@@ -99,4 +99,4 @@ Antes de comenzar a utilizar los endpoints, debes registrarte como médico en la
 
 Este endpoint es una solicitud de tipo POST, por lo que debes enviar los datos como se muestra en la imagen a continuación:
 
-![registro medico](registro_medico.png)
+![registro medico](img/registro_medico.png)
