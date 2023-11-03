@@ -47,13 +47,13 @@ Para instalar las liobrerias, desde la terminal de comandos nos dirigimos al dir
 
 Haste este punto si todo ha ido bien ya tenemos todo listo para levantar la aplicación. Pero todavía nos quedas unos pasos más.
 Desde el mismo diroctório donde nos encontramos, ejecutamos los siguientes comandos para crear las migraciones y luego migrar estos cambios a la base de datos.
-- *python manage.py makemigrations* -> creamos las migracions
-- *python manage.py migrate* -> migramos los cambios a la base de datos
+- *`python manage.py makemigrations`* -> creamos las migracions
+- *`python manage.py migrate`* -> migramos los cambios a la base de datos
 
-Es posible que se genere un error relacionado con el tamaño de los campos que hemos asignados al crear nuestro modelo de datos para las tablas *user*, *bladdercancer* y *bladdercancerprediction*. Para solucionar el error ejecutamos el siguiente comando a cada una de las tablas desde nuestro servidor local:\
+Es posible que se genere un error relacionado con el tamaño de los campos que hemos asignados al crear nuestro modelo de datos para las tablas *`user`*, *`bladdercancer`* y *`bladdercancerprediction`*. Para solucionar el error ejecutamos el siguiente comando a cada una de las tablas desde nuestro servidor local:\
 *ALTER DATABASE `databasename` CHARACTER SET utf8;* 
 
-Hecho esto, ya estamos en condiciones de hacer el `makemigrations ` y el `migrate`.\
+Hecho esto, ya estamos en condiciones de hacer el `makemigrations` y el `migrate`.\
 Una vez hecha las migraciones, procedemos con la importacion de los datos iniciales a la tabla `bladdercancerprediction`. El script se encuentra adjuntado en la misma carpeta donde el proyecto\
 Ahora sí, ya estamos en condiciones de levantar nuesta aplicación, para ello ejecutamos el siguiente comando:
 - python manage.py runserver.
@@ -63,12 +63,12 @@ Para conocer los endpoints disponibles en nuetra alicación, desde un navegador 
 - http://localhost:8000/docs
 - http://localhost:8000/redocs
 
-Las dos rutas nos mustran la documentación en swagger de nuestros endpoints, es decir, muestran:\
+Las dos rutas nos mustran la documentación en swagger de nuestros endpoints, es decir, muestran:
 - `el endpoint`
 - `el/los parametros `
 - `y la repuesta`
 
-Empezamos a probar los distintos endpoints, pero primero hay que darse de alta como medico en la aplicación, a traves del endpoint:\
+Empezamos a probar los distintos endpoints, pero primero hay que darse de alta como medico en la aplicación, a traves del endpoint:
 - http://localhost:8000/auth/register/
 se trata de una petición de tipo POST, por tanto enviamos los datos como se muestra en la imagen a continuación:
 
