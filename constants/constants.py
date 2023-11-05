@@ -57,3 +57,7 @@ KMEANS_MODEL_ROUTE = 'IA_Models/kmeans.pkl'
 KNN_MODEL_ROUTE = 'IA_Models/knn_model.pkl'
 RANDOM_FOREST_MODEL_ROUTE = 'IA_Models/random_forest_model.pkl'
 NAIVE_BAYES_MODEL = 'IA_Models/naive_bayes_model.pkl'
+
+
+#PARAMETROS
+INVALID_PARAMETER = 'El parámetro debe ser un número entero mayor que cero'

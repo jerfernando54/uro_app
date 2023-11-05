@@ -19,9 +19,9 @@ class PredictionApiView(generics.RetrieveAPIView):
       try: 
         res = trainPredictModelBladderCancer([], paramID, True)
         return Response(status=status.HTTP_200_OK, data=res)
-      except ValueError:
-        return Response(status=status.HTTP_400_BAD_REQUEST, data=res) 
-    return Response(status=status.HTTP_400_BAD_REQUEST, data=res) 
+      except ValueError as err:
+        return Response(status=status.HTTP_400_BAD_REQUEST, data= err.args[0]) 
+    return Response(status=status.HTTP_400_BAD_REQUEST, data=constants.INVALID_PARAMETER) 
 
   def retrieve(self, request, *args, **kwargs):
     paramID = kwargs.get('paramID')
@@ -29,9 +29,9 @@ class PredictionApiView(generics.RetrieveAPIView):
     try:
      paramID = int(paramID)
      if paramID <= 0:
-       return Response(status = status.HTTP_400_BAD_REQUEST, data = 'El parámetro debe ser un número entero mayor que cero') 
-    except ValueError:
-      return Response(status = status.HTTP_400_BAD_REQUEST, data = 'El parámetro debe ser un número entero válido') 
+       return Response(status = status.HTTP_400_BAD_REQUEST, data = constants.INVALID_PARAMETER) 
+    except ValueError as err:
+      return Response(status = status.HTTP_400_BAD_REQUEST, data = err.args[0]) 
 
     patient = get_object_or_404(self.queryset, id=paramID) 
     serializer = self.get_serializer(patient)
@@ -40,7 +40,6 @@ class PredictionApiView(generics.RetrieveAPIView):
     
     if isinstance(prediction, list):
       numbers = [int(number) for number in prediction]
-      print(numbers)
       res = {
         **serializer.data,
         'progresiva': constants.PROGRESIVASTATE[numbers[0]],

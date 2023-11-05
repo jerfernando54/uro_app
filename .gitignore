@@ -1,4 +1,6 @@
 .env
+settings.py
 knn_model.pkl
 naive_bayes_model.pkl
 random_forest_model.pkl
+migrations

@@ -95,9 +95,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'uro_bd_v1',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': 3308,
+        'PORT': 3306,
         'OPTIONS': {
             'charset': 'utf8',
         },

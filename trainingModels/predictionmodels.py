@@ -19,11 +19,11 @@ def trainPredictModelBladderCancer(patient, methodID, train = False):
     'hereda': {'Sí':1, 'No':0},
     'exitus': {'No': 0,'Sí':1},
     'primario': {'Sí': 1, 'No': 0},
-    'sexo': {'Varón': 1, 'Mujer': 0},
+    'sexo': {'Varón':1, 'Varon': 1, 'Mujer': 0},
     'recidivante': {'Sí': 1, 'No': 0},
     'expoprofesional':{'Sí':1, 'No':0},
     'acarsinoinsitu': {'Sí': 1, 'No': 0},
-    'evoldesfavorable': {'No': 0,'Si':1},
+    'evoldesfavorable': {'NO': 0,'SI':1},
     'fhistoatipicas': {'Sí': 1, 'No': 0},
     'permiacionvascular': {'Sí': 1, 'No': 0},
     'carcinomaUrotelial': {'Sí': 1, 'No': 0},
@@ -84,7 +84,7 @@ def trainPredictModelBladderCancer(patient, methodID, train = False):
 
     X = df.iloc[:, :24]
     y = df.iloc[:, -5:]
-    # print(y)
+
     if methodID == 0:
       res = K_NN_Model(X, y)
       return res
