@@ -56,7 +56,7 @@ Continúa con la instalación de los módulos y librerías necesarios para el pr
    - `virtualenv venv` para crear el entorno virtual.
    - `source venv/Scripts/activate` para activar el entorno virtual.
 
-2. En la terminal de comandos, navega al directorio *`uro_api/backend`* y ejecuta el siguiente comando para instalar las bibliotecas requeridas:
+2. En la terminal de comandos, navega al directorio *`uro_app`* y ejecuta el siguiente comando para instalar las bibliotecas requeridas:
 
    - `pip install -r requirements.txt`
 
