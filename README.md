@@ -28,7 +28,7 @@ Una vez instalados los requisitos anteriores, sigue estos pasos para configurar 
 
 1. Crea una base de datos con el nombre: *`uro_bd_v1`* en tu servidor de base de datos MySQL.
 
-2. Abre el archivo de configuración de la conexión a la base de datos ubicado en *`uro_api/backend/backend/settings.py`*.
+2. Abre el archivo de configuración de la conexión a la base de datos ubicado en *`uro_app/backend/settings.py`*.
 
 3. En la sección `DATABASES`, configura las siguientes variables con tus credenciales para acceder a la base de datos local que creaste previamente. Por ejemplo:
 
@@ -56,7 +56,7 @@ Continúa con la instalación de los módulos y librerías necesarios para el pr
    - `virtualenv venv` para crear el entorno virtual.
    - `source venv/Scripts/activate` para activar el entorno virtual.
 
-2. En la terminal de comandos, navega al directorio *`uro_api/backend`* y ejecuta el siguiente comando para instalar las bibliotecas requeridas:
+2. En la terminal de comandos, navega al directorio *`uro_app`* y ejecuta el siguiente comando para instalar las bibliotecas requeridas:
 
    - `pip install -r requirements.txt`
 
