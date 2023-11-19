@@ -25,7 +25,7 @@ class IsDoctorOrNurse(BasePermission):
       except User.DoesNotExist:
         return False
       role = user_auth.role
-      if role in ('medico', 'enfermero'):
+      if role in ('Medico', 'Enfermero'):
         return True
       return False
     return False

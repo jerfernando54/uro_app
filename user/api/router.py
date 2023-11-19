@@ -4,7 +4,8 @@ from user.api.views import (
   UserView, 
   BajaUserView, 
   UserUpdatePasswordView, 
-  UserDNIView
+  UserDNIView,
+  PatientDataView
 )
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -14,6 +15,7 @@ urlpatterns = [
   path('auth/register/', RegisterView.as_view()),
   path('auth/login', TokenObtainPairView.as_view()),
   path('auth/token/refesh', TokenRefreshView.as_view()),
+  path('user/clinical_history/<str:user_dni>', PatientDataView.as_view()),
   path('auth/baja/<int:user_id>', BajaUserView.as_view()),
   path('auth/user/update_password', UserUpdatePasswordView.as_view()),
 ]

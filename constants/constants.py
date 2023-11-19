@@ -8,14 +8,14 @@ EXITUSSTATE = {
   0 : 'No',
   1 : 'Sí',
 }
-PROGRESIVASTATE = {
+RECIDIVASTATE= {
   0 : 'No',
   1 : 'Menores características',
   2 : 'Iguales características',
   3 : 'Mayores características',
 }
 
-RECIDIVASTATE = {
+PROGRESIVASTATE = {
   0:'No',
   1 : 'Estadio (T)',
   2 : 'Ganglios (N)',
