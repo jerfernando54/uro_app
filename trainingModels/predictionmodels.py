@@ -101,7 +101,7 @@ def trainPredictModelBladderCancer(patient, methodID, is_trainig = False):
       return constants.NOT_VALID_METHOD
 
 def K_NN_Model(X, y):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=52)
+  X_train, y_train = train_test_split(X, y, test_size=0.2, random_state=52)
 
   k = 3
   knn_classifier = KNeighborsClassifier(n_neighbors=k)
@@ -114,7 +114,7 @@ def K_NN_Model(X, y):
   return constants.KNN_TRAINED
 
 def Random_Forest_Model(X, y):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+  X_train, y_train = train_test_split(X, y, test_size=0.2, random_state=42)
   random_forest_model = RandomForestClassifier(n_estimators=100, random_state=42)
   random_forest_model.fit(X_train, y_train)
   
@@ -125,16 +125,12 @@ def Random_Forest_Model(X, y):
   return constants.RANDOM_FOREST_TRAINED
 
 def Naive_Byes_Model(X,y):
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+  X_train, y_train = train_test_split(X, y, test_size=0.2, random_state=42)
   naive_bayes_model = [MultinomialNB() for _ in range(5)]
 
   for i, model in enumerate(naive_bayes_model):
     y_train_single = y_train.iloc[:, i]
     model.fit(X_train, y_train_single)
-
-  # y_preds = [model.predict(X_test) for model in naive_bayes_model]
-  # accuracies = [accuracy_score(y_test.iloc[:, i], y_preds[i]) for i in range(5)]
-  # y_preds[i]
 
   route = constants.NAIVE_BAYES_MODEL
 
@@ -143,7 +139,6 @@ def Naive_Byes_Model(X,y):
   return constants.NAIVE_BAYES_TRAINED
 
 def getk_NN_Model_Prediction(paciente):
-  print('?????: ', paciente)
   model_route = constants.KNN_MODEL_ROUTE
   knn_model = joblib.load(model_route)
   knn_prediction = knn_model.predict(paciente)
